@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz about country</title>
+    <style type="text/css">
+        body {
+            background-image: url(https://c4.wallpaperflare.com/wallpaper/332/110/571/polygon-material-design-abstract-3d-wallpaper-preview.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #quiz-container {
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(190, 166, 30, 0.466);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        div {
+            font-size: 25px;
+            color: rgba(255, 255, 255, 0.705);
+            width: 100%;
+            background-color: rgba(190, 166, 30, 0.466);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        input {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid #0594ccda;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: normal;
+            outline: none;
+            padding: 16px 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .btn:disabled {
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            color: #ffffff;
+            background-color: #0c090071;
+            box-shadow: rgba(12, 107, 145, 0.582) 0 8px 15px;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+
+        #start-btn-container {
+            margin-top: 30px;
+        }
+
+        #start-btn-container button {
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid #0594ccda;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: normal;
+            outline: none;
+            padding: 16px 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        #start-btn-container button:hover {
+            color: #ffffff;
+            background-color: #0c090071;
+            box-shadow: rgba(12, 107, 145, 0.582) 0 8px 15px;
+            transform: translateY(-2px);
+        }
+
+        #start-btn-container button:active {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('start-btn-container').style.display = 'block';
+        });
+
+        let quizCountries = []; 
+        function startQuiz() {
+            document.getElementById('start-btn-container').style.display = 'none';
+
+            
+            quizCountries = getRandomCountries(4);
+
+            generateQuiz();
+        }
+
+        function getRandomCountries(count) {
+            const allCountries = [
+            { name: 'США', capital: 'Вашингтон' },
+                    { name: 'Китай', capital: 'Пекін' },
+                    { name: 'Індія', capital: 'Нью-Делі' },
+                    { name: 'Бразилія', capital: 'Бразіліа' },
+                    { name: 'Австралія', capital: 'Канберра' },
+                    { name: 'Німеччина', capital: 'Берлін' },
+                    { name: 'Японія', capital: 'Токіо' },
+                    { name: 'Франція', capital: 'Париж' },
+                    { name: 'Південна Корея', capital: 'Сеул' },
+                    { name: 'Канада', capital: 'Оттава' },
+                    { name: 'Італія', capital: 'Рим' },
+                    { name: 'Іспанія', capital: 'Мадрид' },
+                    { name: 'Великобританія', capital: 'Лондон' },
+                    { name: 'Індонезія', capital: 'Джакарта' },
+                    { name: 'Мексика', capital: 'Мехіко' },
+                    { name: 'Туреччина', capital: 'Анкара' },
+                    { name: 'Швеція', capital: 'Стокгольм' },
+                    { name: 'Швейцарія', capital: 'Берн' },
+                    { name: 'Аргентина', capital: 'Буенос-Айрес' },
+                    { name: 'Єгипет', capital: 'Каїр' },
+                    { name: 'Нігерія', capital: 'Абуджа' },
+                    { name: 'ПАР', capital: 'Преторія' },
+                    { name: 'Саудівська Аравія', capital: 'Ер-Ріяд' },
+                    { name: 'Колумбія', capital: 'Богота' },
+                    { name: 'Пакистан', capital: 'Ісламабад' },
+                    { name: 'Польща', capital: 'Варшава' },
+                    { name: 'Україна', capital: 'Київ' },
+                    { name: 'Шри-Ланка', capital: 'Шрі-Джаяварденепура-Коте' },
+                    { name: 'Норвегія', capital: 'Осло' },
+                    { name: 'Бельгія', capital: 'Брюссель' },
+                    { name: 'Марокко', capital: 'Рабат' },
+                    { name: 'Греція', capital: 'Афіни' },
+                    { name: 'Кенія', capital: 'Найробі' },
+                    { name: 'Перу', capital: 'Ліма' },
+                    { name: 'Ірландія', capital: 'Дублін' },
+                    { name: 'Португалія', capital: 'Лісабон' },
+                    { name: 'Нідерланди', capital: 'Амстердам' },
+                    { name: 'Швеція', capital: 'Стокгольм' },
+                    { name: 'Австрія', capital: 'Відень' },
+                    { name: 'Данія', capital: 'Копенгаген' },
+                    { name: 'Ісландія', capital: 'Рейк' },
+                    { name: 'Сінгапур', capital: 'Сінгапур' },
+                    { name: 'Чехія', capital: 'Прага' },
+                    { name: 'Хорватія', capital: 'Загреб' },
+                    { name: 'Малайзія', capital: 'Куала-Лумпур' },
+                    { name: 'Чилі', capital: 'Сантьяго' },
+                    { name: 'Бангладеш', capital: 'Дакка' },
+                    { name: 'Алжир', capital: 'Алжир' },
+                    { name: 'Еквадор', capital: 'Кіто' },
+                    { name: 'Азербайджан', capital: 'Баку' },
+                    { name: 'Ізраїль', capital: 'Єрусалим' },
+                    { name: 'Грузія', capital: 'Тбілісі' },
+            ];
+            shuffleArray(allCountries);
+            return allCountries.slice(0, count);
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function generateQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+
+            for (let i = 0; i < quizCountries.length; i++) {
+                const question = document.createElement('div');
+                question.innerHTML = `
+                    <p>Столиця якої країни: <strong>${quizCountries[i].capital}</strong>?</p>
+                `;
+
+                const answerInput = document.createElement('input');
+                answerInput.type = 'text';
+                answerInput.placeholder = 'Введіть відповідь';
+                question.appendChild(answerInput);
+
+                quizContainer.appendChild(question);
+            }
+
+            const checkAnswersBtn = document.createElement('button');
+            checkAnswersBtn.className = 'btn';
+            checkAnswersBtn.innerHTML = 'Перевірити відповіді';
+            checkAnswersBtn.onclick = checkAnswers;
+            quizContainer.appendChild(checkAnswersBtn);
+
+            const hintBtn = document.createElement('button');
+            hintBtn.className = 'btn';
+            hintBtn.innerHTML = 'Підказка';
+            hintBtn.onclick = showHint;
+            quizContainer.appendChild(hintBtn);
+        }
+
+        function checkAnswers() {
+            const answerInputs = document.querySelectorAll('#quiz-container input');
+
+            let correctAnswers = 0;
+
+            for (let i = 0; i < answerInputs.length; i++) {
+                const userAnswer = answerInputs[i].value.trim().toLowerCase();
+                const correctAnswer = quizCountries[i].name.toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    answerInputs[i].style.border = '2px solid #4CAF50';
+                    alert(`Ви правильно відповіли! "${userAnswer}" - це правильна відповідь.`);
+                    correctAnswers++;
+                } else {
+                    answerInputs[i].style.border = '2px solid #e74c3c';
+                    alert(`Ви помилилися, спробуйте ще раз. Правильна відповідь: "${quizCountries[i].name}".`);
+                }
+            }
+
+            alert(`Правильних відповідей: ${correctAnswers} з ${answerInputs.length}`);
+        }
+
+        function showHint() {
+            alert('Ви що реально думали що тут буде підказка ');
+        }
+    </script>
+</head>
+
+<body>
+    <div id="quiz-container"></div>
+    <div id="start-btn-container">
+        <button class="btn" onclick="startQuiz()">Розпочати вікторину</button>
+    </div>
+</body>
+
+</html>

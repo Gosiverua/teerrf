@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+
+<form name="quizForm1" onsubmit="return false;">
+    <label for="a">Столиця України:</label>
+    <input type="text" id="a">
+    <button onclick="checkAnswer(quizForm1, 'Kyiv', 1)">Перевірити</button>
+    <p id="answer1"></p>
+</form>
+
+<form name="quizForm2" onsubmit="return false;">
+    <label for="a">Столиця США:</label>
+    <input type="text" id="a">
+    <button onclick="checkAnswer(quizForm2, 'Washington DC', 2)">Перевірити</button>
+    <p id="answer2"></p>
+</form>
+
+<form name="quizForm3" onsubmit="return false;">
+    <label for="a">Столиця Польщі:</label>
+    <input type="text" id="a">
+    <button onclick="checkAnswer(quizForm3, 'Warsaw', 3)">Перевірити</button>
+    <p id="answer3"></p>
+</form>
+
+<form name="quizForm4" onsubmit="return false;">
+    <label for="a">Столиця Франції:</label>
+    <input type="text" id="a">
+    <button onclick="checkAnswer(quizForm4, 'Paris', 4)">Перевірити</button>
+    <p id="answer4"></p>
+</form>
+
+<form name="quizForm5" onsubmit="return false;">
+    <label for="a">Столиця Ізраїлю:</label>
+    <input type="text" id="a">
+    <button onclick="checkAnswer(quizForm5, 'Jerusalem', 5)">Перевірити</button>
+    <p id="answer5"></p>
+</form>
+
+<script>
+    function checkAnswer(form, correctAnswer, questionNumber) {
+        let userAnswer = form.a.value.trim().toLowerCase();
+        let answerElement = document.getElementById("answer" + questionNumber);
+
+        if (userAnswer === '' || userAnswer === correctAnswer.toLowerCase()) {
+            answerElement.textContent = 'Правильно. ' + form.title;
+        } else {
+            answerElement.textContent = 'Ви помилились. Правильна відповідь: ' + correctAnswer;
+        }
+    }
+</script>
+
+</body>
+</html>

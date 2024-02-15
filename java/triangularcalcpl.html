@@ -1,0 +1,117 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>trójkąt</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{
+            background: rgba(255, 123, 0, 0.678);
+background: linear-gradient(45deg, rgb(217, 255, 0) 3%, rrgb(87, 45, 255)30%, rgb(5, 122, 255) 99%);
+		}
+		input{
+			border-radius: 10px;
+		}
+		div{
+            width: 40%;
+    box-shadow: rgba(245, 78, 1, 0.459) 0px 6px 12px -2px, rgba(27, 9, 189, 0.3) 0px 10px 14px -9px;
+    margin-top: 100px;
+    font-size: 25px;
+    background-color: rgba(53, 66, 255, 0.133);
+    padding: 30px 60px;
+    justify-content: center;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto
+		}
+		.cqe{
+			width: 50px;
+			height: 50px;
+			font-size: 36px;
+			text-align: center;
+		}
+		.btn {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 180px;
+  will-change: transform;
+}
+.btn:disabled {
+  pointer-events: none;
+}
+.btn:hover {
+  color: #fff;
+  background-color: #b1db63;
+  box-shadow: rgba(170, 90, 90, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+.btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+	</style>
+</head>
+<body>
+	<script>
+
+	function triangle_calculation() {
+  let a = document.qef.a.value;
+  let b = document.qef.b.value;
+  let c = document.qef.c.value;
+  let sol = document.getElementById("qe_sol");
+   
+	if ((a = parseInt(a)) && (b = parseInt(b)) && (c = parseInt(c))){
+		if ((a + c > b) && (c + b > a) && (b + a > c) && a > 0 && b > 0 && c > 0){
+			let p = a+b+c
+			
+			let pivP = p/2
+			let S = Math.sqrt(pivP*(pivP-a)*(pivP-b)*(pivP-c))
+			
+			string = "P = " + p + " S = " + S
+		}else{
+			string = "trójkąt o wartości takich boków nie istnieje"
+		}
+	 }else{
+		string = "wartość boków jest nieprawidłowa"
+	 }
+  sol.innerHTML = string;
+	
+}
+
+	</script>
+	<div>
+<p>Obliczanie pola i obwodu trójkąta.</p>
+<form name="qef" action="javascript:triangle_calculation()">
+a <input class="cqe" name="a" type="text" value=" " size="4">
+b <input class="cqe"  name="b" type="text" value=" " size="4">
+c <input class="cqe"  name="c" type="text" value=" " size="4">
+<input class="btn" type="submit" value="Oblicz">
+<input class="btn" type="reset" name="reset" value="Resetowanie">
+</form>
+odpowiedź: <span id="qe_sol">Wpisz i kliknij „Oblicz”"</span>
+</div>
+</body>
+</html>

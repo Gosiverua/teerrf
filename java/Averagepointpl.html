@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator średniej oceny</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+        body {
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/663/759/611/simple-background-colorful-abstract-rustic-wallpaper-preview.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            width: 40%;
+            box-shadow: rgba(65, 4, 136, 0.5) 0px 6px 12px -2px, rgba(199, 99, 99, 0.3) 0px 3px 7px -3px;
+            margin-top: 100px;
+            font-size: 25px;
+            background-color: rgba(40, 133, 255, 0.6);
+            padding: 30px 60px;
+            border-radius: 10px;
+        }
+        .side {
+            width: 95%;
+            padding: 10px 0;
+            font-size: 25px;
+            color: #070707;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #070707;
+            outline: none;
+            background: transparent;
+        }
+        .btn {
+            background-color: initial;
+            background-image: linear-gradient(rgba(75, 125, 158, 0.84), rgba(255, 221, 26, 0.84) 70%);
+            border-radius: 10px;
+            border-width: 0;
+            box-shadow: rgba(107, 32, 204, 0.575) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: Quicksand, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            justify-content: center;
+            letter-spacing: .04em;
+            line-height: 16px;
+            margin: 10px;
+            padding: 18px 18px;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: rgba(196, 126, 35, 0.4) 0 0 4px, rgba(177, 24, 24, 0.2) 0 0 12px,
+                rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+        }
+        .btn:hover {
+            background-image: linear-gradient(#B384C9, #391F5B 50%);
+        }
+        @media (min-width: 768px) {
+            .btn {
+                font-size: 21px;
+                padding: 18px 34px;
+            }
+        }
+        #answer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function calculateAverage() {
+            var gradesInput = document.getElementById("grades").value;
+            var gradesArray = gradesInput.split(",").map(Number);
+
+            var sum = gradesArray.reduce(function (a, b) {
+                return a + b;
+            }, 0);
+
+            var average = sum / gradesArray.length;
+
+            document.getElementById("answer").innerHTML = "Ocena średnia " + average.toFixed(2);
+        }
+    </script>
+
+    <center>
+        <div class="container">
+            <h1>Kalkulator średniej oceny</h1>
+            <form>
+                Wpisz swoje oceny oddzielone przecinkiem:
+                <input class="side" id="grades" type="text" value="" size="30">
+                <br>
+                <button class="btn" type="button" onclick="calculateAverage()">Oblicz ocenę</button>
+                <br>
+            </form>
+            <span id="answer"></span>
+        </div>
+    </center>
+</body>
+</html>
